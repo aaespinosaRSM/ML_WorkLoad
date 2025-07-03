@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -9,10 +7,15 @@ import datetime
 
 import os
 import sys
+import subprocess
 
-
-os.system(f"{sys.executable} -m pip install streamlit-extras")
-
+# Instalar paquete si no está
+try:
+    from streamlit_extras.metric_cards import style_metric_cards
+    from streamlit_extras.stylable_container import stylable_container
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "streamlit-extras"])
+    st.experimental_rerun()
 
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.stylable_container import stylable_container
