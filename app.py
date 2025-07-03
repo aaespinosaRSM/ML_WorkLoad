@@ -1,9 +1,22 @@
+
+
 import streamlit as st
 import pandas as pd
 import joblib
 import plotly.express as px
 import numpy as np
 import datetime
+
+import os
+import sys
+
+# Instalar streamlit-extras si no está instalado
+try:
+    import streamlit_extras
+except ImportError:
+    os.system(f"{sys.executable} -m pip install streamlit-extras")
+    st.experimental_rerun()  # Reiniciar la app para cargar el paquete
+
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.stylable_container import stylable_container
 import shap
