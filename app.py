@@ -10,7 +10,15 @@ import subprocess
 
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.stylable_container import stylable_container
-import shap
+
+# Reemplaza la línea de importación de SHAP
+try:
+    import shap
+    SHAP_ENABLED = True
+except ImportError:
+    SHAP_ENABLED = False
+    st.warning("Funcionalidad SHAP deshabilitada - Algunas características de interpretación no estarán disponibles")
+
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
@@ -396,6 +404,12 @@ with tab2:
     )
 
 with tab3:
+
+    if not SHAP_ENABLED:
+        st.error("SHAP no está instalado. Para habilitar todas las funciones, instala con: pip install shap==0.45.0")
+        st.image("https://raw.githubusercontent.com/slundberg/shap/master/docs/artwork/shap_diagram.png")
+        st.stop()
+
     st.header("🧠 Interpretación del modelo")
     
     if 'df_processed' not in st.session_state:

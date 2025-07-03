@@ -4,9 +4,8 @@ numpy==1.24.3
 joblib==1.3.2
 plotly==5.18.0
 scikit-learn==1.3.0
-shap==0.44.0
+shap==0.45.0  # Versión específica que funciona con Streamlit Cloud
 matplotlib==3.7.2
 streamlit-extras==0.3.0
 datetime==5.2
-ipython==8.17.2
 pyarrow==14.0.1
